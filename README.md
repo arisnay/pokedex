@@ -36,3 +36,67 @@ npm run dev
 ```sh
 npm run build
 ```
+
+---
+
+## 🧾 Documentación del proyecto
+
+### 1. Instalación
+
+```sh
+# clonar repo
+git clone <URL_DEL_REPOSITORIO>
+cd pokedex
+npm install
+
+# iniciar frontend
+npm run dev
+```
+
+### 2. Tecnologías
+
+- Vue 3
+- Vite
+- Pinia (state management)
+- Vue Router
+- Axios
+- JavaScript moderno (ES2020+)
+- CSS (scoped)
+
+### 3. Endpoints (backend local)
+
+El frontend usa la base API configurada en `src/services/api.js`:
+
+```js
+baseURL: 'http://localhost:3000/api'
+```
+
+Rutas esperadas:
+
+- `GET /api/pokemons` → listado de Pokémon (o fallback PokeAPI)
+- `GET /api/pokemons/:id` → detalle por ID
+- (opcional) otros endpoints si extiendes el backend según necesidades
+
+### 4. Uso de variables de entorno (.env)
+
+Crea archivo raíz `.env` o `.env.local`:
+
+```env
+VITE_API_BASE_URL=http://localhost:3000/api
+```
+
+En `src/services/api.js` usa:
+
+```js
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
+  headers: { 'Content-Type': 'application/json' },
+});
+
+export default api;
+```
+
+Con esto puedes cambiar backend sin tocar el código fuente.
+

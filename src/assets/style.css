@@ -1,0 +1,12 @@
+body {
+  background: #0f380f;
+  color: #9bbc0f;
+  font-family: 'Press Start 2P', cursive;
+}
+
+button {
+  background: #306230;
+  border: none;
+  padding: 10px;
+  color: white;
+}
